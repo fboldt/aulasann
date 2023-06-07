@@ -132,3 +132,4 @@ dmypy.json
 cats_vs_dogs_small
 *jena*
 aclImdb
+*.keras
