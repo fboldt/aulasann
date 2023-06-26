@@ -136,3 +136,5 @@ aclImdb
 *.tar.gz
 glove*
 spa-eng*
+
+trial_*/
