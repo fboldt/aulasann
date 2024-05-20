@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 2018_Book_NeuralNetworksAndDeepLearning.pdf
+
+aclImdb*
