@@ -21,8 +21,8 @@
   - 1958: Rosenblatt – Perceptron Mark I
 
 - **Modelo matemático**
-  - y = f(wᵀx + b)
-  - Função de ativação sinal: y = sign(wᵀx)
+  - \( y = f(w^T x + b) \)
+  - Função de ativação sinal: \( y = \text{sign}(w^T x) \)
   - Interpretação geométrica como hiperplano separador
 
 - **Interpretação geométrica**
@@ -32,7 +32,7 @@
 
 #### Bloco 2: Regra de Atualização (50 min)
 - **Função de perda e atualização**
-  - w ← w + η(y - ŷ)x
+  - \( w \leftarrow w + \eta (y - \hat{y})x \)
   - Interpretação como descida de gradiente estocástica
 
 - **Propriedades e Convergência**
@@ -66,18 +66,18 @@
 
 #### Bloco 1: Arquitetura MLP (45 min)
 - **Limitações do perceptron**: problema XOR
-- **Definição de MLP**: y = fₗ(... f₂(f₁(x)))
+- **Definição de MLP**: \( y = f_L(... f_2(f_1(x))) \)
 - **Teorema da universalidade**: aproximação de funções contínuas
 - **Interpretando MLP**: engenharia de representação hierárquica
 
 #### Bloco 2: Funções de Ativação (45 min)
-- **Sigmoid**: σ(z) = 1/(1 + e⁻ᶻ)
-  - Derivada: σ'(z) = σ(z)(1 - σ(z))
+- **Sigmoid**: \( \sigma(z) = \frac{1}{1 + e^{-z}} \)
+  - Derivada: \( \sigma'(z) = \sigma(z)(1 - \sigma(z)) \)
   - Problemas: saturação, vanishing gradient
 
-- **Tanh**: tanh(z), derivada: 1 - tanh²(z)
-- **ReLU**: max(0, z), derivada: {0 se z≤0, 1 se z>0}
-- **Softmax**: exp(zᵢ) / Σⱼ exp(zⱼ)
+- **Tanh**: \( \tanh(z) \), derivada: \( 1 - \tanh^2(z) \)
+- **ReLU**: \( \max(0, z) \), derivada: \( \{0, 1\} \)
+- **Softmax**: \( \frac{\exp(z_i)}{\sum_j \exp(z_j)} \)
 
 #### Bloco 3: Backpropagation (60 min)
 - **Forward pass**: propagação camada a camada
@@ -103,19 +103,19 @@
 
 #### Bloco 1: Overfitting (50 min)
 - **Demonstração visual**: curvas de training vs. validation
-- **Decomposição Bias-Variance**: Error = Bias² + Variance + Noise
+- **Decomposição Bias-Variance**: \( \text{Error} = \text{Bias}^2 + \text{Variance} + \text{Noise} \)
 - **Causas**: dados ruidosos, features espúrias, capacidade excessiva
 
 #### Bloco 2: Regularização (45 min)
-- **L2 Regularization**: L = L_original + λΣᵢwᵢ²
-- **L1 Regularization**: L = L_original + λΣᵢ|wᵢ| (promove sparsity)
-- **Dropout**: desativação aleatória com probabilidade p
+- **L2 Regularization**: \( L = L_{\text{original}} + \lambda \sum_i w_i^2 \)
+- **L1 Regularization**: promove sparsity
+- **Dropout**: desativação aleatória com probabilidade \(p\)
 - **Early Stopping**: patience, restore_best_weights
 
 #### Bloco 3: Inicialização e Laboratório (55 min)
-- **Xavier/Glorot**: Var(w) = 2/(n_in + n_out)
-- **He initialization**: Var(w) = 2/n_in (para ReLU)
-- **Batch Normalization**: x̂ = (x - μ)/√(σ² + ε)
+- **Xavier/Glorot**: \( \text{Var}(w) = \frac{2}{n_{\text{in}} + n_{\text{out}}} \)
+- **He initialization**: para ReLU
+- **Batch Normalization**: \( \hat{x} = \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} \)
 - **Laboratório IMDB**: comparação de técnicas de regularização
 
 **Leituras**: Chollet Cap. 4-5, Aggarwal Cap. 4
@@ -136,7 +136,7 @@
 
 #### Bloco 1: Operações Fundamentais (45 min)
 - **Motivação**: invariância translacional, redução de parâmetros
-- **Convolução 2D**: S(i,j) = (K * I)(i,j) = Σₘ Σₙ K(m,n)I(i-m, j-n)
+- **Convolução 2D**: \( S(i, j) = (K * I)(i, j) = \sum_m \sum_n K(m, n) I(i - m, j - n) \)
 - **Stride e padding**: preservação de dimensões
 - **Pooling**: max pooling, average pooling
 
@@ -180,7 +180,7 @@
 
 #### Tópico 3: ResNet — Aprendizado Residual
 - **Degradation problem**: redes profundas têm erro maior
-- **Blocos residuais**: H(x) = F(x) + x
+- **Blocos residuais**: \( H(x) = F(x) + x \)
 - **Skip connections**: gradientes fluem diretamente
 - **Estrutura ResNet-50**: (3, 4, 6, 3) blocos por estágio
 - **Laboratório**: comparação VGG vs Inception vs ResNet em CIFAR-10
@@ -217,8 +217,8 @@
 #### Bloco 1: Introdução a RNNs (45 min)
 - **Dados sequenciais**: texto, áudio, séries temporais
 - **Arquitetura recorrente**: 
-  - hₜ = f(W_hh·hₜ₋₁ + W_xh·xₜ + b_h)
-  - yₜ = W_hy·hₜ + b_y
+  - \( h_t = f(W_{hh} h_{t-1} + W_{xh} x_t + b_h) \)
+  - \( y_t = W_{hy} h_t + b_y \)
 - **Diagrama unfolded**: timesteps
 
 #### Bloco 2: LSTM e GRU (50 min)
@@ -228,7 +228,7 @@
 - **LSTM**: Long Short-Term Memory
   - Gates: input, forget, output
   - Cell state: memória persistente
-  - Fórmulas principais das gates
+  - Fórmulas principais
 
 - **GRU**: simplificação do LSTM
 - **Bidirecionais e empilhadas**
@@ -257,8 +257,8 @@
 
 #### Bloco 1: Encoder-Decoder (45 min)
 - **Motivação**: tradução, sumarização, chatbots
-- **Encoder**: c = q(h₁, h₂, ..., hₜ)
-- **Decoder**: p(y₁, y₂, ..., yₜ | c)
+- **Encoder**: \( \mathbf{c} = q(\mathbf{h}_1, ..., \mathbf{h}_T) \)
+- **Decoder**: \( p(y_1, ..., y_T | \mathbf{c}) \)
 - **Tokens especiais**: `<BOS>`, `<EOS>`
 
 #### Bloco 2: Teacher Forcing (50 min)
@@ -270,7 +270,7 @@
 #### Bloco 3: Atenção e Laboratório (55 min)
 - **Problema do bottleneck**: context vector fixo
 - **Atenção Bahdanau (additive)**:
-  - e_ij = a(s_i-1, h_j) = vᵀ·tanh(W₁h_j + W₂s_i-1)
+  - \( e_{ij} = a(s_{i-1}, h_j) = \mathbf{v}^T \tanh(\mathbf{W}_1 h_j + \mathbf{W}_2 s_{i-1}) \)
   
 - **Atenção Luong (multiplicative)**:
   - Dot-product, General, Concat
@@ -305,13 +305,15 @@
   - Key (K): "Que informação cada palavra oferece?"
   - Value (V): "Qual é o conteúdo real?"
 
-- **Formulação**: qᵢ = xᵢW^Q, kᵢ = xᵢW^K, vᵢ = xᵢW^V
+- **Formulação**: \( q_i = x_i W^Q \), \( k_i = x_i W^K \), \( v_i = x_i W^V \)
 
 #### Bloco 2: Scaled Dot-Product (50 min)
-- **Cálculo de scores**: scores = QKᵀ
-- **Problema de escala**: variância ≈ d_k
+- **Cálculo de scores**: \( \text{scores} = QK^T \)
+- **Problema de escala**: variância \( \approx d_k \)
 - **Solução — Scaled Dot-Product**:
-  - Attention(Q, K, V) = softmax(QKᵀ/√d_k)·V
+  \[
+  \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+  \]
 
 - **Masking**: padding mask, causal mask (look-ahead)
 - **Implementação**: NumPy/PyTorch do zero
@@ -319,10 +321,10 @@
 #### Bloco 3: Multi-Head Attention (55 min)
 - **Motivação**: múltiplas "noções de relevância"
 - **Processo**:
-  1. Projetar em h conjuntos de Q, K, V
+  1. Projetar em \(h\) conjuntos de Q, K, V
   2. Aplicar attention em cada head
   3. Concatenar outputs
-  4. Projeção final W^O
+  4. Projeção final \(W^O\)
 
 - **Implementação completa**: classe PyTorch
 - **Laboratório**: visualização de attention patterns
@@ -348,18 +350,26 @@
 - **Paper "Attention Is All You Need" (2017)**: 173k+ citações
 - **Estrutura dual**: Encoder (6 camadas) + Decoder (6 camadas)
 - **Positional Encoding sinusoidal**:
-  - PE_(pos,2i) = sin(pos/10000^(2i/d_model))
-  - PE_(pos,2i+1) = cos(pos/10000^(2i/d_model))
+  \[
+  PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
+  \]
+  \[
+  PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
+  \]
 
 #### Bloco 2: Feed-Forward e Normalization (45 min)
 - **Position-wise FFN**:
-  - FFN(x) = max(0, xW₁ + b₁)W₂ + b₂
+  \[
+  \text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2
+  \]
 
-- **Residual Connections**: Output = Sublayer(x) + x
+- **Residual Connections**: \( \text{Output} = \text{Sublayer}(x) + x \)
 - **Layer Normalization**: 
-  - LayerNorm(x) = γ·(x - μ)/√(σ² + ε) + β
+  \[
+  \text{LayerNorm}(x) = \gamma \cdot \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta
+  \]
 
-- **Padrão "Add & Norm"**: x = LayerNorm(x + Sublayer(x))
+- **Padrão "Add & Norm"**: \( x = \text{LayerNorm}(x + \text{Sublayer}(x)) \)
 
 #### Bloco 3: Treinamento e Laboratório (55 min)
 - **Masking**: padding, look-ahead, cross-attention
@@ -405,7 +415,9 @@
 
 #### Bloco 2: Scaling Laws e Emergent Abilities (45 min)
 - **Scaling Laws**: performance previsível
-  - L(N) = (N_c/N)^α
+  \[
+  L(N) = \left(\frac{N_c}{N}\right)^\alpha
+  \]
 
 - **Emergent Abilities**: habilidades imprevisíveis
   - Few-shot learning
@@ -452,21 +464,27 @@
 
 #### Bloco 1: Autoencoders Clássicos (45 min)
 - **Definição**: rede neural para compressão + reconstrução
-- **Componentes**: Encoder f_φ: x → z, Decoder g_θ: z → x̂
+- **Componentes**: Encoder \( f_\phi: x \rightarrow z \), Decoder \( g_\theta: z \rightarrow \hat{x} \)
 - **Bottleneck**: latent space comprimido
-- **Loss**: L = (1/N)Σᵢ||xᵢ - x̂ᵢ||²
+- **Loss**: \( L = \frac{1}{N}\sum_{i=1}^N \|x_i - \hat{x}_i\|^2 \)
 - **Latent space**: visualização, propriedades, limitações
 
 #### Bloco 2: VAEs — Teoria (50 min)
-- **Paradigma probabilístico**: z ~ q_φ(z|x) = N(μ(x), σ²(x))
+- **Paradigma probabilístico**: \( z \sim q_\phi(z|x) = \mathcal{N}(\mu(x), \sigma^2(x)) \)
 - **ELBO derivation**:
-  - log p_θ(x) ≥ 𝔼_q[log p_θ(x|z)] - D_KL(q_φ(z|x) || p(z))
+  \[
+  \log p_\theta(x) \geq \mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))
+  \]
 
 - **Loss VAE**:
-  - ℒ = Reconstruction Loss - KL Divergence
+  \[
+  \mathcal{L} = \text{Reconstruction Loss} - \text{KL Divergence}
+  \]
 
 - **Reparameterization Trick**:
-  - ε ~ N(0, I), z = μ_φ(x) + σ_φ(x)⊙ε
+  \[
+  \epsilon \sim \mathcal{N}(0, I), \quad z = \mu_\phi(x) + \sigma_\phi(x) \odot \epsilon
+  \]
 
 #### Bloco 3: Laboratório (55 min)
 - **Implementação completa em PyTorch**
@@ -497,10 +515,12 @@
 #### Bloco 1: Fundamentos (50 min)
 - **Arquitetura dual**: Generator vs. Discriminator
 - **Minimax Game**:
-  - min_G max_D V(D,G) = 𝔼_x[log D(x)] + 𝔼_z[log(1 - D(G(z)))]
+  \[
+  \min_G \max_D V(D,G) = \mathbb{E}_{x}[\log D(x)] + \mathbb{E}_{z}[\log(1 - D(G(z)))]
+  \]
 
-- **Nash Equilibrium**: D(x) = 0.5 quando p_g = p_data
-- **Non-saturating loss**: max_G log D(G(z))
+- **Nash Equilibrium**: \( D(x) = 0.5 \) quando \( p_g = p_{data} \)
+- **Non-saturating loss**: \( \max_G \log D(G(z)) \)
 
 #### Bloco 2: DCGAN (45 min)
 - **Inovações arquiteturais** (Radford et al., 2015):
@@ -549,20 +569,26 @@
 #### Bloco 1: Fundamentos de Diffusion (50 min)
 - **Inspiração**: termodinâmica não-equilibrada
 - **Forward process**: adição gradual de ruído
-  - q(xₜ | xₜ₋₁) = N(xₜ; √(1-βₜ)xₜ₋₁, βₜI)
+  \[
+  q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} x_{t-1}, \beta_t I)
+  \]
 
 - **Reparametrização direta**:
-  - xₜ = √(ᾱₜ)x₀ + √(1-ᾱₜ)ε
+  \[
+  x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t} \epsilon
+  \]
 
-- **Reverse process**: p_θ(xₜ₋₁|xₜ)
+- **Reverse process**: \( p_\theta(x_{t-1}|x_t) \)
 - **Score matching**: conexão teórica
 
 #### Bloco 2: DDPM (45 min)
 - **Loss simplificada**:
-  - L_simple = 𝔼[||ε - ε_θ(xₜ, t)||²]
+  \[
+  L_{simple} = \mathbb{E}_{t, x_0, \epsilon}\left[\|\epsilon - \epsilon_\theta(x_t, t)\|^2\right]
+  \]
 
 - **Algoritmo de treinamento**: sample timestep aleatório, prever ruído
-- **Sampling algorithm**: denoising iterativo de x_T a x₀
+- **Sampling algorithm**: denoising iterativo de \( x_T \) a \( x_0 \)
 - **Arquitetura U-Net**: time embedding, self-attention, ResNet blocks
 
 #### Bloco 3: Latent Diffusion e Stable Diffusion (55 min)
@@ -576,7 +602,9 @@
   4. Cross-attention conditioning
 
 - **Classifier-Free Guidance**:
-  - ε̃ = ε_uncond + s·(ε_cond - ε_uncond)
+  \[
+  \tilde{\epsilon} = \epsilon_{\text{uncond}} + s \cdot (\epsilon_{\text{cond}} - \epsilon_{\text{uncond}})
+  \]
 
 - **Laboratório**: experimentação com Stable Diffusion
   - Variar guidance scale
@@ -602,14 +630,14 @@
 
 #### Bloco 1: Interpretabilidade (50 min)
 - **Problema da "caixa preta"**
-- **Saliency Maps**: S = |∂y_c/∂x|
+- **Saliency Maps**: \( S = \left|\frac{\partial y_c}{\partial x}\right| \)
 - **Grad-CAM**: heatmaps em CNNs
 - **LIME**: explicação local via modelo linear
 - **SHAP**: Shapley values da teoria dos jogos
 
 #### Bloco 2: Robustez Adversarial (45 min)
-- **Exemplos adversariais**: x_adv = x + δ
-- **FGSM**: x_adv = x + ε·sign(∇_x J)
+- **Exemplos adversariais**: \( x_{adv} = x + \delta \)
+- **FGSM**: \( x_{adv} = x + \epsilon \cdot \text{sign}(\nabla_x J) \)
 - **PGD**: FGSM iterativo com projeção
 - **C&W**: otimização sofisticada
 - **Ataques físicos**: adversarial patches
@@ -625,7 +653,7 @@
   - Casos reais: COMPAS, Amazon recruiting, facial recognition
 
 - **Definições de Fairness**:
-  - Demographic parity: P(Ŷ=1|A=0) = P(Ŷ=1|A=1)
+  - Demographic parity
   - Equal opportunity
   - Equalized odds
 
